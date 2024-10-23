@@ -3,3 +3,13 @@ kind: Kustomization
 resources:
 - deployment.yaml
 - service.yaml
+commonLabels:
+  project: instavote
+  env: staging
+commonAnnotations:
+  supported-by: "sre@dtag.de"
+configMapGenerator:
+  - name: vote
+    literals:
+      - OPTION_A=STAGING
+      - OPTION_B=DEV
